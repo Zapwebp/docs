@@ -103,6 +103,33 @@ export const DOC_ROUTES: DocRoute[] = [
     description: 'Standard machine-readable error catalog with root cause explanations and actionable fixes.',
     keywords: ['error codes', 'troubleshooting', 'unsupported_format', 'alpha_not_representable', 'fix']
   },
+  {
+    path: '/smart',
+    file: 'smart',
+    title: 'Smart Optimization',
+    category: 'Core',
+    badge: 'v2.19',
+    description: 'Deterministic pixel buffer analysis, edge density detection, and 10 automatic format & quality profiles.',
+    keywords: ['smart', 'optimization', 'heuristics', 'edge detection', 'profiles', 'automatic', 'quality']
+  },
+  {
+    path: '/lossless',
+    file: 'lossless',
+    title: 'Lossless',
+    category: 'Core',
+    badge: 'Guaranteed',
+    description: 'Mathematical pixel identity verification, source quality evaluation, and bit-exact guarantees.',
+    keywords: ['lossless', 'exact', 'pixel verification', 'fidelity', 'sourceQuality', 'sizeImpact']
+  },
+  {
+    path: '/reports',
+    file: 'reports',
+    title: 'Performance Reports',
+    category: 'Core',
+    badge: 'v2.19',
+    description: 'Transaction journal aggregation, project-wide bandwidth reporting, and Green Code carbon offset estimation.',
+    keywords: ['reports', 'carbon', 'performance report', 'bandwidth', 'journal', 'audit']
+  },
 
   // Plugins
   {
@@ -136,6 +163,33 @@ export const DOC_ROUTES: DocRoute[] = [
     category: 'Plugins',
     description: 'First-party cloud adapters for Supabase, Firebase, and Neocities with pre-upload conversion.',
     keywords: ['storage', 'supabase', 'firebase', 'neocities', 'upload', 'cascading delete']
+  },
+  {
+    path: '/storage/supabase',
+    file: 'storage/supabase',
+    title: 'Supabase Storage',
+    category: 'Plugins',
+    badge: 'Guide',
+    description: 'Convert images before upload to Supabase Storage with pre-upload conversion, RLS policies, and error handling.',
+    keywords: ['storage', 'supabase', 'supabase storage', 'rls', 'upload', 'batch', 'pool']
+  },
+  {
+    path: '/storage/firebase',
+    file: 'storage/firebase',
+    title: 'Firebase Storage',
+    category: 'Plugins',
+    badge: 'Guide',
+    description: 'Convert images before upload to Firebase Storage with modular SDK v9+, security rules, and error handling.',
+    keywords: ['storage', 'firebase', 'firebase storage', 'gcs', 'rules', 'upload', 'batch', 'pool']
+  },
+  {
+    path: '/storage/neocities',
+    file: 'storage/neocities',
+    title: 'Neocities Storage',
+    category: 'Plugins',
+    badge: 'Guide',
+    description: 'Convert images before upload to Neocities static hosting with rate limiting, warnings, and error handling.',
+    keywords: ['storage', 'neocities', 'neocities storage', 'static hosting', 'rate limit', 'upload', 'pool']
   },
   {
     path: '/plugins/vscode',
@@ -180,6 +234,15 @@ export const DOC_ROUTES: DocRoute[] = [
     badge: 'Format',
     description: 'High-resolution multi-size ICO/CUR container generation, embedded PNGs, BMP DIB decoding, and favicon suite generator.',
     keywords: ['ico', 'cur', 'favicon', 'format', 'multi-size', 'apple-touch-icon', 'manifest', 'plugin']
+  },
+  {
+    path: '/plugins/compressor',
+    file: 'plugins/compressor',
+    title: 'Compressor Plugin',
+    category: 'Plugins',
+    badge: 'Compression',
+    description: 'Intelligent size reduction plugin with deterministic binary search quality optimization and adaptive downscaling.',
+    keywords: ['compressor', 'compression', 'targetBytes', 'downscaling', 'binary search', 'size', 'plugin']
   },
 
   // Developers
@@ -257,6 +320,24 @@ export const DOC_ROUTES: DocRoute[] = [
     category: 'Developers',
     description: 'Stateless HTTP API endpoints: /health, /inspect, /convert, and /batch multipart conversion.',
     keywords: ['rest api', 'http', 'endpoints', 'post /convert', 'batch', 'stateless']
+  },
+  {
+    path: '/ai-integration',
+    file: 'ai-integration',
+    title: 'AI Integration',
+    category: 'Developers',
+    badge: 'AI',
+    description: 'Building AI-powered image conversion and optimization pipelines with content signals, model hooks, and custom metadata.',
+    keywords: ['ai', 'ai integration', 'signals', 'vision models', 'pipeline', 'hooks']
+  },
+  {
+    path: '/scaffolding',
+    file: 'scaffolding',
+    title: 'Plugin Scaffolding',
+    category: 'Developers',
+    badge: 'CLI',
+    description: 'Scaffolding agent-native Zapwebp plugins, storage adapters, transforms, and metadata handlers using create-zapwebp.',
+    keywords: ['scaffolding', 'create-zapwebp', 'starter', 'generator', 'template', 'plugin']
   },
 
   // Platform
@@ -344,6 +425,15 @@ export const DOC_ROUTES: DocRoute[] = [
     keywords: ['performance', 'budgets', 'lcp', 'workers', 'transferable', 'memory', 'throughput']
   },
   {
+    path: '/reliability',
+    file: 'reliability',
+    title: 'Reliability',
+    category: 'Platform',
+    badge: 'Masterplan',
+    description: 'The Zapwebp Integration Ecosystem Reliability Masterplan: 50-case Golden Corpus, adversarial fuzzing, and soak testing.',
+    keywords: ['reliability', 'golden corpus', 'fuzzing', 'soak test', 'dashboard', 'masterplan']
+  },
+  {
     path: '/freeze',
     file: 'freeze',
     title: 'Core Freeze',
@@ -379,6 +469,7 @@ if (ROUTE_MAP['/sdk/core']) {
 }
 if (ROUTE_MAP['/sdk/plugin']) {
   ROUTE_MAP['/plugins/plugin-sdk'] = ROUTE_MAP['/sdk/plugin'];
+  ROUTE_MAP['/plugins/building'] = ROUTE_MAP['/sdk/plugin'];
   ROUTE_MAP['/docs/plugins/plugin-sdk'] = ROUTE_MAP['/sdk/plugin'];
   ROUTE_MAP['/docs/sdk/plugin'] = ROUTE_MAP['/sdk/plugin'];
   ROUTE_MAP['/plugin-sdk'] = ROUTE_MAP['/sdk/plugin'];
@@ -390,11 +481,15 @@ if (ROUTE_MAP['/sdk/cli']) {
 if (ROUTE_MAP['/plugins/vite']) ROUTE_MAP['/vite'] = ROUTE_MAP['/plugins/vite'];
 if (ROUTE_MAP['/plugins/next']) ROUTE_MAP['/next'] = ROUTE_MAP['/plugins/next'];
 if (ROUTE_MAP['/plugins/storage']) ROUTE_MAP['/storage'] = ROUTE_MAP['/plugins/storage'];
+if (ROUTE_MAP['/storage/supabase']) ROUTE_MAP['/plugins/storage/supabase'] = ROUTE_MAP['/storage/supabase'];
+if (ROUTE_MAP['/storage/firebase']) ROUTE_MAP['/plugins/storage/firebase'] = ROUTE_MAP['/storage/firebase'];
+if (ROUTE_MAP['/storage/neocities']) ROUTE_MAP['/plugins/storage/neocities'] = ROUTE_MAP['/storage/neocities'];
 if (ROUTE_MAP['/plugins/github-action']) {
   ROUTE_MAP['/github-action'] = ROUTE_MAP['/plugins/github-action'];
   ROUTE_MAP['/actions'] = ROUTE_MAP['/plugins/github-action'];
 }
 if (ROUTE_MAP['/plugins/crop']) ROUTE_MAP['/crop'] = ROUTE_MAP['/plugins/crop'];
+if (ROUTE_MAP['/plugins/compressor']) ROUTE_MAP['/compressor'] = ROUTE_MAP['/plugins/compressor'];
 if (ROUTE_MAP['/plugins/lens']) ROUTE_MAP['/lens'] = ROUTE_MAP['/plugins/lens'];
 if (ROUTE_MAP['/plugins/laravel']) ROUTE_MAP['/laravel'] = ROUTE_MAP['/plugins/laravel'];
 if (ROUTE_MAP['/lock-target']) {
@@ -417,4 +512,12 @@ if (ROUTE_MAP['/plugins/format-ico']) {
   ROUTE_MAP['/ico'] = ROUTE_MAP['/plugins/format-ico'];
   ROUTE_MAP['/favicon'] = ROUTE_MAP['/plugins/format-ico'];
 }
+if (ROUTE_MAP['/smart']) ROUTE_MAP['/smart-optimization'] = ROUTE_MAP['/smart'];
+if (ROUTE_MAP['/reports']) {
+  ROUTE_MAP['/carbon'] = ROUTE_MAP['/reports'];
+  ROUTE_MAP['/performance-reports'] = ROUTE_MAP['/reports'];
+}
+if (ROUTE_MAP['/lossless']) ROUTE_MAP['/lossless-mode'] = ROUTE_MAP['/lossless'];
+if (ROUTE_MAP['/ai-integration']) ROUTE_MAP['/ai-pipeline'] = ROUTE_MAP['/ai-integration'];
+if (ROUTE_MAP['/reliability']) ROUTE_MAP['/reliability-masterplan'] = ROUTE_MAP['/reliability'];
 

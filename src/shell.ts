@@ -175,6 +175,11 @@ export function shell(content: HTMLElement): HTMLElement {
       </nav>
 
       <div class="sidebar-footer">
+        <a href="https://zapwebp.vercel.app" class="sidebar-footer-link" target="_blank" rel="noopener noreferrer">
+          <span class="footer-icon">⚡</span>
+          <span>${t('header.converter')}</span>
+          <span class="ext-arrow" style="margin-left: auto; font-size: 11px;">↗</span>
+        </a>
         <a href="/llms.txt" class="sidebar-footer-link" target="_blank" rel="noopener noreferrer">
           <span class="footer-icon">🤖</span>
           <span>${t('sidebar.llms_context')}</span>
@@ -341,7 +346,9 @@ export function shell(content: HTMLElement): HTMLElement {
 
     // Wire clicks on items
     langOptionsGroup.querySelectorAll('.dropdown-item').forEach((btn) => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const chosen = btn.getAttribute('data-locale');
         if (chosen) {
           setLocale(chosen);
@@ -350,6 +357,9 @@ export function shell(content: HTMLElement): HTMLElement {
       });
     });
   }
+
+  // Pre-render dropdown items on initialization
+  renderDropdownOptions();
 
   function toggleLangDropdown() {
     const isHidden = langDropdownMenu?.hidden ?? true;
@@ -375,6 +385,12 @@ export function shell(content: HTMLElement): HTMLElement {
   });
 
   // Close dropdown on outside click or Esc
+  document.addEventListener('pointerdown', (e) => {
+    if (!langDropdownWrap?.contains(e.target as Node)) {
+      closeLangDropdown();
+    }
+  });
+
   document.addEventListener('click', (e) => {
     if (!langDropdownWrap?.contains(e.target as Node)) {
       closeLangDropdown();
